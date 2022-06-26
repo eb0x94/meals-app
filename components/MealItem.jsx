@@ -6,17 +6,29 @@ import {
     Image,
     Platform,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import MealDetails from "./MealDetails";
 
 const MealItem = ({
+    id,
     title,
     imageUrl,
     mealDuration,
     mealComplexity,
     mealAffordability,
 }) => {
+    let navigation = useNavigation();
+
+    let onDetailItemPressHandler = () => {
+        navigation.navigate("MealDetail", {
+            mealID: id,
+        });
+    };
+
     return (
         <View style={styles.mealItemContainter}>
             <Pressable
+                onPress={onDetailItemPressHandler}
                 style={({ pressed }) =>
                     pressed ? styles.iosBottonPressed : null
                 }
@@ -30,15 +42,11 @@ const MealItem = ({
                         />
                         <Text style={styles.title}>{title}</Text>
                     </View>
-                    <View style={styles.details}>
-                        <Text style={styles.detailItem}>{mealDuration}m</Text>
-                        <Text style={styles.detailItem}>
-                            {mealComplexity.toUpperCase()}
-                        </Text>
-                        <Text style={styles.detailItem}>
-                            {mealAffordability.toUpperCase()}
-                        </Text>
-                    </View>
+                    <MealDetails
+                        mealDuration={mealDuration}
+                        mealComplexity={mealComplexity}
+                        mealAffordability={mealAffordability}
+                    />
                 </View>
             </Pressable>
         </View>
@@ -70,16 +78,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: 18,
         margin: 8,
-    },
-    details: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: 8,
-    },
-    detailItem: {
-        marginHorizontal: 4,
-        fontSize: 12,
     },
     iosBottonPressed: {
         opacity: 0.8,

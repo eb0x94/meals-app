@@ -21,9 +21,12 @@ const MealsOverviewScreen = ({ route, navigation }) => {
         });
     }, [catId, navigation]);
 
+  
+
     let renderMealItem = (itemData) => {
         let parsedItem = itemData.item;
         let mealItemProps = {
+            id: parsedItem.id,
             title: parsedItem.title,
             imageUrl: parsedItem.imageUrl,
             mealDuration: parsedItem.duration,

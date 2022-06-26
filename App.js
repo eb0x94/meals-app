@@ -4,29 +4,30 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import MealDetailScreen from "./screens/MealDetailScreen";
 
-const NavStack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
         <>
             <StatusBar style="light" />
             <NavigationContainer>
-                <NavStack.Navigator
+                <Stack.Navigator
                     screenOptions={{
                         headerStyle: { backgroundColor: "#351401" },
                         headerTintColor: "white",
                         contentStyle: { backgroundColor: "#3f2f25" },
                     }}
                 >
-                    <NavStack.Screen
+                    <Stack.Screen
                         name="MealsCategories"
                         component={CategoriesScreen}
                         options={{
                             title: "All Categories",
                         }}
                     />
-                    <NavStack.Screen
+                    <Stack.Screen
                         name="MealsOverview"
                         component={MealsOverviewScreen}
                         // options={({route, navigation}) => {
@@ -37,7 +38,11 @@ export default function App() {
                         // }} -> With this you can setup navigation specific details. the following is an alternative to acheve the same but from inside the components passing the details towards the navigator.
                       
                     />
-                </NavStack.Navigator>
+                    <Stack.Screen
+                      name='MealDetail'
+                      component={MealDetailScreen}
+                    />
+                </Stack.Navigator>
             </NavigationContainer>
         </>
     );
