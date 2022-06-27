@@ -1,3 +1,5 @@
+
+
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
 import CategoriesScreen from "./screens/CategoriesScreen";
@@ -7,7 +9,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MealDetailScreen from "./screens/MealDetailScreen";
 
 const Stack = createNativeStackNavigator();
-
+ 
 export default function App() {
     return (
         <>
@@ -35,12 +37,13 @@ export default function App() {
                         //   return {
                         //     title: catId
                         //   }
-                        // }} -> With this you can setup navigation specific details. the following is an alternative to acheve the same but from inside the components passing the details towards the navigator.
-                      
+                        // }} -> With this you can setup navigation specific details.
+                        //The following is an alternative to acheve the same but from inside the components passing the details towards the navigator.
+                        //Inside mealDetail screen!
                     />
                     <Stack.Screen
-                      name='MealDetail'
-                      component={MealDetailScreen}
+                        name="MealDetail"
+                        component={MealDetailScreen}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
